@@ -33,7 +33,8 @@ class Calories_macros(db.Model):
     daily_caloric_intake = db.Column(db.Integer)
     daily_protein_goal = db.Column(db.Integer)
     daily_carb_goal = db.Column(db.Integer)
-    daily_fat_goal = db.Column(db.DateTime)
+    daily_fat_goal = db.Column(db.Integer)
+    date = db.Column(db.DateTime)
 
     user = db.relationship("User", backref="calories_macros")
 
@@ -86,4 +87,43 @@ class User_meals(db.Model):
     def __repr__(self):
         return f"<User_meals meal_id={self.meal_id} meal_name={self.meal_name} meal_calories={self.meal_calories}>"
 
-class 
+class Food(db.Model):
+
+    __tablename__ = "foods"
+
+    food_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    food_name = db.Column(db.String)
+    total_calories = db.Column(db.Integer)
+    total_fat = db.Column(db.Integer)
+    total_carbs = db.Column(db.Integer)
+    total_protein = db.Column(db.Integer)
+    food_ounces = db.Column(db.Integer)
+    food_grams = db.Column(db.Integer)
+
+    def __repr__(self):
+        return f"<Food food_id{self.food_id} food_name{self.food_name}>"
+
+class User_tracking(db.Model):
+
+    __tablename__ = "tracking"
+
+    tracking_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    food_id = db.Column(db.Integer, db.ForeignKey("foods.food_id"))
+    deduct_daily_calories = db.Column(db.Integer)
+    deduct_daily_macros = db.Column(db.Integer)
+    date = db.Column(db.DateTime)
+
+    user = db.relationship("User", backref="tracking")
+    food = db.relationship("Food", backref="tracking")
+
+    def __repr__(self):
+        return f"<User_tracking tracking_id{self.tracking_id} deduct_daily_calories{self.deduct_daily_calories} deduct_daily_macros{self.deduct_daily_macros}>"
+
+def connect_to_db(flask_app, )
+    #### NEED TO COMPLETE THIS !! 
+
+if __name__ == "__main__":
+    from server import app 
+
+    connect_to_db(app)
