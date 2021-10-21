@@ -61,7 +61,7 @@ class Goal(db.Model):
     __tablename__ = "goals"
 
     goal_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    fitness_goals = db.Column(db.String)
+    fitness_goal = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
 
     user = db.relationship("User", backref="goals")
