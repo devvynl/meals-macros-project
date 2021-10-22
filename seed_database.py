@@ -7,3 +7,10 @@ from datetime import datetime
 import crud 
 import model
 import server 
+
+os.system("dropdb calories")
+os.system("createdb calories")
+
+model.connect_to_db(server.app)
+model.db.create_all()
+

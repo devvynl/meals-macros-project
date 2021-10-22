@@ -12,12 +12,12 @@ def create_user(email, password):
 
     return user 
 
-def create_cals_macros(user, daily_caloric_intake, daily_protein_goal, daily_carb_goal, daily_fat_goal)
+def create_cals_macros(user, daily_caloric_intake, daily_protein_goal, daily_carb_goal, daily_fat_goal):
 
     """ create calorie and macros """
 
     calories_and_macros = Calories_macros(
-        user=user
+        user=user,
         daily_caloric_intake=daily_caloric_intake, 
         daily_protein_goal=daily_protein_goal, 
         daily_carb_goal=daily_carb_goal, 
@@ -29,7 +29,7 @@ def create_cals_macros(user, daily_caloric_intake, daily_protein_goal, daily_car
 
     return calories_and_macros 
 
-def create_diet(diet, user)
+def create_diet(diet, user):
 
     """ create diet preference """
 
@@ -40,7 +40,7 @@ def create_diet(diet, user)
 
     return diet 
 
-def create_goal(user,fitness_goal)
+def create_goal(user,fitness_goal):
 
     """ create user fitness goal """
 
@@ -51,17 +51,17 @@ def create_goal(user,fitness_goal)
 
     return goal 
 
-def create_meal(user, meal_name, meal_calories, meal_protein, meal_carb, meal_fat)
+def create_meal(user, meal_name, meal_calories, meal_protein, meal_carb, meal_fat):
 
     """ create user meals """
 
     meal = User_meals(
-        user=user 
-        meal_name=meal_name 
-        meal_calories=meal_calories 
-        meal_protein=meal_protein 
-        meal_carb=meal_carb
-        meal_fat=meal_fat
+        user=user, 
+        meal_name=meal_name, 
+        meal_calories=meal_calories, 
+        meal_protein=meal_protein, 
+        meal_carb=meal_carb,
+        meal_fat=meal_fat,
     )
 
     db.session.add(meal)
@@ -69,19 +69,19 @@ def create_meal(user, meal_name, meal_calories, meal_protein, meal_carb, meal_fa
 
     return meal 
 
-def create_food(user, food_name, food_calories, total_fat, total_carb, total_protein, food_ounces, food_grams)
+def create_food(user, food_name, food_calories, total_fat, total_carb, total_protein, food_ounces, food_grams):
 
     """ create food for user to use for tracking """ 
 
     food = Food(
-        user=user 
-        food_name=food_name
-        food_calories=food_calories
-        total_fat=total_fat
-        total_carb=total_carb
-        total_protein=total_protein
-        food_ounces=food_ounces
-        food_grams=food_grams
+        user=user, 
+        food_name=food_name,
+        food_calories=food_calories,
+        total_fat=total_fat,
+        total_carb=total_carb,
+        total_protein=total_protein,
+        food_ounces=food_ounces,
+        food_grams=food_grams,
     )
 
     db.session.add(food)
@@ -89,15 +89,15 @@ def create_food(user, food_name, food_calories, total_fat, total_carb, total_pro
 
     return food
 
-def create_tracking(user, food, deduct_daily_calroies, deduct_daily_macros)
+def create_tracking(user, food, deduct_daily_calroies, deduct_daily_macros):
 
     """ create tracking for user to enter food throughout the day """
 
     tracking = User_tracking(
-        user=user
-        food=food
-        deduct_daily_calories=deduct_daily_calories
-        deduct_daily_macros=deduct_daily_macros
+        user=user,
+        food=food,
+        deduct_daily_calories=deduct_daily_calories,
+        deduct_daily_macros=deduct_daily_macros,
     )
 
     db.session.add(tracking)

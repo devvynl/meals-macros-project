@@ -17,7 +17,7 @@ class User(db.Model):
     height = db.Column(db.Integer)
     age = db.Column(db.Integer)
     fitness_goal = db.Column(db.String)
-    goal_weight = db.Column(db.Interger)
+    goal_weight = db.Column(db.Integer)
 
     def __repr__(self):
         return f"<User user_id={self.user_id} email={self.email}"
@@ -56,7 +56,7 @@ class Diet(db.Model):
         return f"<Diet diet_id={self.diet_id} diet={self.diet}>"
 
 class Goal(db.Model):
-    """ user's fitness goals """"
+    """ user's fitness goals """
 
     __tablename__ = "goals"
 
@@ -120,8 +120,15 @@ class User_tracking(db.Model):
     def __repr__(self):
         return f"<User_tracking tracking_id{self.tracking_id} deduct_daily_calories{self.deduct_daily_calories} deduct_daily_macros{self.deduct_daily_macros}>"
 
-def connect_to_db(flask_app, )
-    #### NEED TO COMPLETE THIS !! 
+def connect_to_db(flask_app, db_uri="postgresql:///calories", echo=False):
+    flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
+    flask_app.config["SQLALCHEMY_ECHO"] = echo
+    flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+    db.app = flask_app
+    db.init_app(flask_app)
+
+    print("! ! ! Connected to the db ! ! !")
 
 if __name__ == "__main__":
     from server import app 
