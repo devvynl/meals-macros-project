@@ -24,6 +24,28 @@ def food():
     food = crud.create_food()
     return render_template('food.html', food=food)
 
+@app.route('/tracking')
+def tracking():
+    """show users tracking"""
+    tracking = crud.create_tracking()
+    return render_template('tracking.html', tracking=tracking)
+
+@app.route('/user' , methods=['POST'])
+def users():
+    """create new user"""
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = crud.get_user_by_email(email)
+    if user:
+        flash('Already a user!')
+    else: 
+        crud.create_user(email,password)
+        flash('User created!')
+    
+    return redirect('/')
+
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0.", debug=True)
