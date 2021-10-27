@@ -45,6 +45,28 @@ def users():
     
     return redirect('/')
 
+@app.route('/login', methods=['POST'])
+def login():
+    """user login"""
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = crud.get_user_by_email(email)
+    if not user or user.password != password:
+        flash('email or password incorrect')
+    else:
+        session['user_email'] = user.email 
+        flash(f"Welcome, {user.email}!")
+    
+    return redirect('/')
+
+@app.route('/meal' , methods=['POST'])
+def meal():
+    """user created meal"""
+
+    
+
 
 if __name__ == "__main__":
     connect_to_db(app)
