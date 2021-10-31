@@ -1,0 +1,37 @@
+[
+    {
+        "food_name": "bread",
+        "calories": "110", 
+        "protein": "5", 
+        "carb": "16", 
+        "fat": "3"
+    }, 
+    {
+        "food_name": "chicken",
+        "calories": "135", 
+        "protein": "18", 
+        "carb": "2", 
+        "fat": "2"
+    },
+    {
+        "food_name": "egg",
+        "calories": "70", 
+        "protein": "11", 
+        "carb": "2", 
+        "fat": "6"
+    }, 
+    {
+        "food_name": "banana",
+        "calories": "90", 
+        "protein": "5", 
+        "carb": "11", 
+        "fat": "2"
+    },
+    {
+        "food_name": "oatmeal",
+        "calories": "150", 
+        "protein": "7", 
+        "carb": "13", 
+        "fat": "3"
+    }
+]

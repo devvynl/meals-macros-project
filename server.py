@@ -3,7 +3,7 @@
 from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db
 import crud
-import requests
+# import requests
 
 from jinja2 import StrictUndefined
 
@@ -11,12 +11,22 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
-API_KEY = os.environ['MYFITNESSPAL_KEY']
+# API_KEY = os.environ['MYFITNESSPAL_KEY']
 
 @app.route('/')
 def homepage():
     """show homepage"""
     return render_template('homepage.html')
+
+@app.route('/login-page')
+def login_page():
+    """"show login page"""
+    return render_template('login-page.html')
+
+@app.route('/calculator')
+def calculator_page():
+    """calculate user calories and macros page"""
+    return render_template('calculator.html')
 
 @app.route('/food')
 def food():
@@ -64,10 +74,10 @@ def login():
 @app.route('/meal' , methods=['POST'])
 def meal():
     """user created meal"""
-
+    pass
     
 
 
 if __name__ == "__main__":
     connect_to_db(app)
-    app.run(host="0.0.0.0.", debug=True)
+    app.run(host="0.0.0.0", debug=True)
