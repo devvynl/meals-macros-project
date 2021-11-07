@@ -8,6 +8,7 @@ itsdangerous==2.0.1
 Jinja2==3.0.1
 MarkupSafe==2.0.1
 psycopg2-binary==2.8.6
+requests==2.26.0
 SQLAlchemy==1.4.18
 Werkzeug==2.0.1
 Flask-DebugToolbar==0.11.0

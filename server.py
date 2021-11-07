@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db
+from fatsecret import Fatsecret
 import crud
 import os
 import requests
@@ -10,6 +11,7 @@ import requests
 
 app = Flask(__name__)
 app.secret_key = "dev"
+fs = Fatsecret(consumer_key, consumer_secret)
 # app.jinja_env.undefined = StrictUndefined
 
 API_KEY = os.environ['MYFITNESSPAL_KEY']
@@ -23,6 +25,19 @@ def homepage():
 def login_page():
     """"show login page"""
     return render_template('login-page.html')
+
+@app.route("/fatsecret")
+def get_food_information():
+    """"search for food details on FatSecret"""
+    url = f"https://platform.fatsecret.com/rest/server.api{id}"
+    payload = {'apikey': API_KEY}
+
+    response = requests.get(url, params=payload)
+
+    food = response.json()
+    
+    # return 
+
 
 @app.route('/calculator')
 def calculator_page():
