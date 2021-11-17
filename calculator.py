@@ -1,12 +1,13 @@
 """calorie and macro calculator"""
 
-def get_user_info():
-    gender = str(input("Enter your gender: "))
-    weight = int(input("Enter your weight: "))
-    height = int(input("Enter your height: "))
-    age = int(input("Enter your age: "))
-    user_info = [f'{gender}, {weight}, {height} , {age}']
-    return user_info
+##### ------>need to implement this is a form instead of here<------ ##### 
+# def get_user_info():
+#     gender = str(input("Enter your gender: "))
+#     weight = int(input("Enter your weight: "))
+#     height = int(input("Enter your height: "))
+#     age = int(input("Enter your age: "))
+#     user_info = [f'{gender}, {weight}, {height} , {age}']
+#     return user_info
 
 def calculate_bmr(gender, weight, height, age):
     # gender = "male" or "female"

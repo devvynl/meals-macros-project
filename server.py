@@ -2,19 +2,19 @@
 
 from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db
-from fatsecret import Fatsecret
+# from fatsecret import Fatsecret
 import crud
 import os
-import requests
+# import requests
 
 # from jinja2 import StrictUndefined
 
 app = Flask(__name__)
 app.secret_key = "dev"
-fs = Fatsecret(consumer_key, consumer_secret)
+# fs = Fatsecret(consumer_key, consumer_secret)
 # app.jinja_env.undefined = StrictUndefined
 
-API_KEY = os.environ['MYFITNESSPAL_KEY']
+# API_KEY = os.environ['MYFITNESSPAL_KEY']
 
 @app.route('/')
 def homepage():
@@ -86,6 +86,17 @@ def login():
         flash(f"Welcome, {user.email}!")
     
     return redirect('/')
+
+@app.route('/logout')
+def confirm_logout():
+    """confirm user logged out """
+    if 'user' in session: 
+        session.pop('user', None)
+        flash('Logged out.')
+    else: 
+        flash('Logged in.')
+    
+    return render_template('homepage.html')
 
 @app.route('/meal' , methods=['POST'])
 def meal():
