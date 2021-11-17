@@ -1,15 +1,49 @@
-<!doctype html>
-<html>
-    {% extends 'base.html' %} 
+{% extends 'base.html' %} 
 
-    {% bock title %} Meals & Macros Calculator {% endblock %}
+    {% block title %} Meals & Macros Calculator {% endblock %}
     {% block body %}
     <h1>Welcome to calorie and macro calculator page</h1>
     <h2>To calculate your daily calories and macros, please answer the questions below</h2>
-    <h2>Questions:</h2>
+    <!-- <h2>Questions:</h2> -->
     
-    <form> 
-        
-    </form>
-    {% endblock %} 
-</html>
+    <div class="row">
+        <div class="fluid quiz">
+          {# Meals & Macros Questionare #}
+          <form action="/questions" method="POST">
+            <fieldset>
+              <legend>What's your gender?</legend>
+              <select name="gender" id="gender">
+                <option value="">------- Select a gender -------</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <div class="row">
+                <legend>What's your age?</legend>
+                <input type="number" name="age" id="age">   
+              </div>
+            </fieldset>
+            <fieldset>
+              <div class="row">
+                <legend>What's your height?</legend>
+                <input type="number" name="height" id="height"> 
+              </div>
+            </fieldset>
+              <fieldset>
+              <div class="row">
+                <legend>What's your weight?</legend>
+                <input type="number" name="height" id="height"> 
+              </div>
+            </fieldset>
+
+            <div class="row">
+              <input type="submit" value="Update Profile" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 

@@ -38,7 +38,6 @@ def get_food_information():
     
     # return 
 
-
 @app.route('/calculator')
 def calculator_page():
     """calculate user calories and macros page"""
@@ -98,10 +97,27 @@ def confirm_logout():
     
     return render_template('homepage.html')
 
-@app.route('/meal' , methods=['POST'])
-def meal():
-    """user created meal"""
-    pass
+@app.route('/questions', methods=['POST'])
+def meals_macros_quiestionare():
+    gender = request.form.get('gender')
+    print(gender)
+    age = request.form.get('age')
+    print(age)
+    height = request.form.get('height')
+    print(height)
+    weight = request.form.get('weight')
+    print(weight)
+#     user_info = ['gender', 'weight', 'height', 'age']
+#     # add questions here?
+#         # db.session.commit()
+#         flash('thank you for completing the questionare!')
+    return ("success")
+#     return redirect('/calculator')
+
+# @app.route('/meal' , methods=['POST'])
+# def meal():
+#     """user created meal"""
+#     pass
     
 
 
