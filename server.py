@@ -43,11 +43,11 @@ def calculator_page():
     """calculate user calories and macros page"""
     return render_template('calculator.html')
 
-@app.route('/food')
-def food():
-    """view food options"""
-    food = crud.create_food()
-    return render_template('food.html', food=food)
+# @app.route('/food')
+# def food():
+#     """view food options"""
+#     food = crud.create_food()
+#     return render_template('food.html', food=food)
 
 @app.route('/tracking')
 def tracking():

@@ -87,25 +87,25 @@ def create_meal(user, meal_name, meal_calories, meal_protein, meal_carb, meal_fa
 
     return meal 
 
-def create_food(user, food_name, food_calories, total_fat, total_carb, total_protein, food_ounces, food_grams):
+# def create_food(user, food_name, food_calories, total_fat, total_carb, total_protein, food_ounces, food_grams):
 
-    """ create food for user to use for tracking """ 
+#     """ create food for user to use for tracking """ 
 
-    food = Food(
-        user=user, 
-        food_name=food_name,
-        food_calories=food_calories,
-        total_fat=total_fat,
-        total_carb=total_carb,
-        total_protein=total_protein,
-        food_ounces=food_ounces,
-        food_grams=food_grams,
-    )
+#     food = Food(
+#         user=user, 
+#         food_name=food_name,
+#         food_calories=food_calories,
+#         total_fat=total_fat,
+#         total_carb=total_carb,
+#         total_protein=total_protein,
+#         food_ounces=food_ounces,
+#         food_grams=food_grams,
+#     )
 
-    db.session.add(food)
-    db.session.commit()
+#     db.session.add(food)
+#     db.session.commit()
 
-    return food
+#     return food
 
 def create_tracking(user, food, deduct_daily_calroies, deduct_daily_macros):
 
