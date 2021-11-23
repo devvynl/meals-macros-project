@@ -56,8 +56,8 @@ def tracking():
     tracking = crud.create_tracking()
     return render_template('tracking.html', tracking=tracking)
 
-@app.route('/users' , methods=['POST'])
-def users():
+@app.route('/user' , methods=['POST'])
+def user():
     """create new user"""
     email = request.form.get('email')
     password = request.form.get('password')
@@ -65,6 +65,7 @@ def users():
     lname = request.form.get('lname')
 
     user = crud.get_user_by_email(email)
+
     if user:
         flash('Already a user!')
     else: 
@@ -72,6 +73,8 @@ def users():
         flash('User created!')
     
     return redirect('/')
+    # render_template('homepage.html')
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():

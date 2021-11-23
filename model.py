@@ -9,18 +9,18 @@ class User(db.Model):
     __tablename__ = "users"
 
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    first_name = db.Column(db.String)
-    last_name = db.Column(db.String)
-    email = db.Column(db.String, unique=True)
-    password = db.Column(db.String)
-    weight = db.Column(db.Integer)
-    height = db.Column(db.Integer)
-    age = db.Column(db.Integer)
-    fitness_goal = db.Column(db.String)
-    goal_weight = db.Column(db.Integer)
+    name = db.Column(db.String(50))
+    lname = db.Column(db.String(50))
+    email = db.Column(db.String(80), unique=True)
+    password = db.Column(db.String(50))
+    # weight = db.Column(db.Integer)
+    # height = db.Column(db.Integer)
+    # age = db.Column(db.Integer)
+    # fitness_goal = db.Column(db.String)
+    # goal_weight = db.Column(db.Integer)
 
     def __repr__(self):
-        return f"<User user_id={self.user_id} email={self.email}"
+        return f"<user_id={self.user_id} email={self.email}>"
 
 class Calories_macros(db.Model):
     """ user's calories & macros """
