@@ -1,5 +1,4 @@
 """ server for meals & macros project """
-
 from flask import Flask, render_template, request, flash, session, redirect
 from model import connect_to_db
 # from fatsecret import Fatsecret
@@ -7,12 +6,13 @@ import crud
 import os
 # import requests
 
-# from jinja2 import StrictUndefined
+
+from jinja2 import StrictUndefined
 
 app = Flask(__name__)
 app.secret_key = "dev"
 # fs = Fatsecret(consumer_key, consumer_secret)
-# app.jinja_env.undefined = StrictUndefined
+app.jinja_env.undefined = StrictUndefined
 
 # API_KEY = os.environ['MYFITNESSPAL_KEY']
 
@@ -29,25 +29,26 @@ def login_page():
 @app.route("/fatsecret")
 def get_food_information():
     """"search for food details on FatSecret"""
-    url = f"https://platform.fatsecret.com/rest/server.api{id}"
+
+    url = f"https://platform.fatsecret.com/js?key=23a92470c57a4a4ba460c8f0030927e9&auto_load=true"
     payload = {'apikey': API_KEY}
 
     response = requests.get(url, params=payload)
 
     food = response.json()
     
-    # return 
+    return render_template('fatsecret.html')
 
 @app.route('/calculator')
 def calculator_page():
     """calculate user calories and macros page"""
     return render_template('calculator.html')
 
-# @app.route('/food')
-# def food():
-#     """view food options"""
-#     food = crud.create_food()
-#     return render_template('food.html', food=food)
+@app.route('/food')
+def food():
+    """view food options"""
+    food = crud.create_food()
+    return render_template('food.html', food=food)
 
 @app.route('/tracking')
 def tracking():
@@ -55,36 +56,41 @@ def tracking():
     tracking = crud.create_tracking()
     return render_template('tracking.html', tracking=tracking)
 
-@app.route('/user' , methods=['POST'])
+@app.route('/users' , methods=['POST'])
 def users():
     """create new user"""
     email = request.form.get('email')
     password = request.form.get('password')
+    name = request.form.get('name')
+    lname = request.form.get('lname')
 
     user = crud.get_user_by_email(email)
     if user:
         flash('Already a user!')
     else: 
-        crud.create_user(email,password)
+        crud.create_user(email,password, name, lname)
         flash('User created!')
     
     return redirect('/')
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
-    """user login"""
+    """process user login"""
 
     email = request.form.get('email')
     password = request.form.get('password')
+    name = request.form.get('name')
+    lname = request.form.get('lname')
 
     user = crud.get_user_by_email(email)
     if not user or user.password != password:
         flash('email or password incorrect')
     else:
-        session['user_email'] = user.email 
-        flash(f"Welcome, {user.email}!")
+        session['user_id'] = user.user_id
+        session['name'] = user.name
+        flash(f"Welcome, {user.name}!")
     
-    return redirect('/')
+    return render_template('profile.html' , user=user)
 
 @app.route('/logout')
 def confirm_logout():
