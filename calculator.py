@@ -1,6 +1,6 @@
 """calorie and macro calculator"""
 
-##### ------>need to implement this is a form instead of here<------ ##### 
+##### ------>need to implement this as a form instead of here<------ ##### 
 # def get_user_info():
 #     gender = str(input("Enter your gender: "))
 #     weight = int(input("Enter your weight: "))

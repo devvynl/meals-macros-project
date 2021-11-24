@@ -109,19 +109,17 @@ def confirm_logout():
 @app.route('/questions', methods=['POST'])
 def meals_macros_quiestionare():
     gender = request.form.get('gender')
-    print(gender)
+    # print(gender)
     age = request.form.get('age')
-    print(age)
+    # print(age)
     height = request.form.get('height')
-    print(height)
+    # print(height)
     weight = request.form.get('weight')
-    print(weight)
-#     user_info = ['gender', 'weight', 'height', 'age']
-#     # add questions here?
-#         # db.session.commit()
-#         flash('thank you for completing the questionare!')
-    return ("success")
-#     return redirect('/calculator')
+    # print(weight)
+    activity = request.form.get('activity')
+    # return ("success")
+
+    return render_template('/fatsecret.html')
 
 # @app.route('/meal' , methods=['POST'])
 # def meal():

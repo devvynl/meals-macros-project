@@ -27,14 +27,28 @@
             <fieldset>
               <div class="row">
                 <legend>What's your height?</legend>
-                <input type="number" name="height" id="height"> 
+                <select name="height" id="height"> 
+                <option value="">------- Select your height in inches -------</option>
+                {% for num in range(48, 85) %}
+                <option value="{{ num }}"> {{ num }} </option>
+                {% endfor %}
+              </select>
               </div>
             </fieldset>
               <fieldset>
               <div class="row">
-                <legend>What's your weight?</legend>
+                <legend>What's your weight? (in pounds)</legend>
                 <input type="number" name="height" id="height"> 
               </div>
+            </fieldset>
+            <fieldset>
+              <legend>What's your activity level?</legend>
+              <select name="activity" id="activity">
+                <option value="">------- Select your activity -------</option>
+                <option value="low">low</option>
+                <option value="moderate">moderate</option>
+                <option value="high">high</option>
+              </select>
             </fieldset>
 
             <div class="row">
