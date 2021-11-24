@@ -6,7 +6,7 @@ db = SQLAlchemy()
 class User(db.Model):
     """ A user. """
 
-    __tablename__ = "users"
+    __tablename__ = "user"
 
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(50))
@@ -20,16 +20,16 @@ class User(db.Model):
     # goal_weight = db.Column(db.Integer)
 
     def __repr__(self):
-        return f"<user_id={self.user_id} email={self.email}>"
+        return f"<user_id = {self.user_id} email = {self.email}>"
 
 class Calories_macros(db.Model):
     """ user's calories & macros """
 
     __tablename__ = "calories_macros"
 
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"))
     caloric_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    macro_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    macro_id = db.Column(db.Integer, primary_key=True)
     daily_caloric_intake = db.Column(db.Integer)
     daily_protein_goal = db.Column(db.Integer)
     daily_carb_goal = db.Column(db.Integer)
@@ -47,7 +47,7 @@ class Diet(db.Model):
     __tablename__ = "diet_preference"
 
     diet_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"))
     diet = db.Column(db.String)
 
     user = db.relationship("User", backref="diet_preference")
@@ -62,7 +62,7 @@ class Goal(db.Model):
 
     goal_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     fitness_goal = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"))
 
     user = db.relationship("User", backref="goals")
 
@@ -75,7 +75,7 @@ class User_meals(db.Model):
     __tablename__ = "meals"
 
     meal_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"))
     meal_name = db.Column(db.String)
     meal_calories = db.Column(db.Integer)
     meal_fat = db.Column(db.Integer)
@@ -108,7 +108,7 @@ class User_tracking(db.Model):
     __tablename__ = "tracking"
 
     tracking_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"))
     food_id = db.Column(db.Integer, db.ForeignKey("foods.food_id"))
     deduct_daily_calories = db.Column(db.Integer)
     deduct_daily_macros = db.Column(db.Integer)

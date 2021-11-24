@@ -69,11 +69,11 @@ def user():
     if user:
         flash('Already a user!')
     else: 
-        crud.create_user(email,password, name, lname)
-        flash('User created!')
+        crud.create_user(email, password, name, lname)
+        flash('User created! Log into account.')
     
     return redirect('/')
-    # render_template('homepage.html')
+    # return render_template('homepage.html' , user=user)
 
 
 @app.route('/login', methods=['POST', 'GET'])
