@@ -26,18 +26,18 @@ def login_page():
     """"show login page"""
     return render_template('login-page.html')
 
-@app.route("/fatsecret")
-def get_food_information():
-    """"search for food details on FatSecret"""
+# @app.route("/fatsecret")
+# def get_food_information():
+#     """"search for food details on FatSecret"""
 
-    url = f"https://platform.fatsecret.com/js?key=23a92470c57a4a4ba460c8f0030927e9&auto_load=true"
-    payload = {'apikey': API_KEY}
+#     url = f"https://platform.fatsecret.com/js?key=23a92470c57a4a4ba460c8f0030927e9&auto_load=true"
+#     payload = {'apikey': API_KEY}
 
-    response = requests.get(url, params=payload)
+#     response = requests.get(url, params=payload)
 
-    food = response.json()
+#     food = response.json()
     
-    return render_template('fatsecret.html')
+#     return render_template('fatsecret.html')
 
 @app.route('/calculator')
 def calculator_page():
@@ -124,7 +124,7 @@ def meals_macros_quiestionare():
     else: 
         crud.questionare(age, gender, height, weight, activity)
 
-    return render_template('fatsecret.html')
+    return render_template('index.html')
 
 # @app.route('/meal' , methods=['POST'])
 # def meal():
