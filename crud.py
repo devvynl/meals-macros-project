@@ -1,6 +1,6 @@
 """ CRUD operations for meals and macros project """
-# from model import db, User, Calories_macros, Diet, Goal, User_meals, Food, User_tracking, connect_to_db
-from model import db, User, connect_to_db 
+from model import db, User, CaloriesMacros, Diet, Goal, Food, UserQuestions, connect_to_db
+# from model import db, User, connect_to_db 
 
 def create_user(email, password, name, lname):
     """ create a new  user """
@@ -69,37 +69,34 @@ def create_goal(user,fitness_goal):
 
     return goal 
 
-def create_meal(user, meal_name, meal_calories, meal_protein, meal_carb, meal_fat):
+# def create_meal(user, meal_name, meal_calories, meal_protein, meal_carb, meal_fat):
 
-    """ create user meals """
+#     """ create user meals """
 
-    meal = User_meals(
-        user=user, 
-        meal_name=meal_name, 
-        meal_calories=meal_calories, 
-        meal_protein=meal_protein, 
-        meal_carb=meal_carb,
-        meal_fat=meal_fat,
-    )
+#     meal = User_meals(
+#         user=user, 
+#         meal_name=meal_name, 
+#         meal_calories=meal_calories, 
+#         meal_protein=meal_protein, 
+#         meal_carb=meal_carb,
+#         meal_fat=meal_fat,
+#     )
 
-    db.session.add(meal)
-    db.session.commit()
+#     db.session.add(meal)
+#     db.session.commit()
 
-    return meal 
+#     return meal 
 
-def create_food(user, food_name, food_calories, total_fat, total_carb, total_protein, food_ounces, food_grams):
+def create_food(food_name, food_calories, total_fat, total_carb, total_protein):
 
     """ create food for user to use for tracking """ 
 
-    food = Food(
-        user=user, 
+    food = Food( 
         food_name=food_name,
         food_calories=food_calories,
         total_fat=total_fat,
         total_carb=total_carb,
         total_protein=total_protein,
-        food_ounces=food_ounces,
-        food_grams=food_grams,
     )
 
     db.session.add(food)
@@ -139,6 +136,7 @@ def questionare(gender, age, height, weight, activity):
     db.session.commit()
 
     return questionare_info 
+
 
 if __name__ == '__main__':
     from server import app

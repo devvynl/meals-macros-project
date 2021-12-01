@@ -50,11 +50,11 @@ def food():
     food = crud.create_food()
     return render_template('food.html', food=food)
 
-@app.route('/tracking')
-def tracking():
-    """show users tracking"""
-    tracking = crud.create_tracking()
-    return render_template('tracking.html', tracking=tracking)
+# @app.route('/tracking')
+# def tracking():
+#     """show users tracking"""
+#     tracking = crud.create_tracking()
+#     return render_template('tracking.html', tracking=tracking)
 
 @app.route('/user', methods=['POST'])
 def user():
@@ -126,12 +126,12 @@ def meals_macros_quiestionare():
 
     return render_template('index.html')
 
-# @app.route('/meal' , methods=['POST'])
-# def meal():
-#     """user created meal"""
-#     pass
+@app.route('/goals', methods=['POST'])
+def fitness_goals():
+    fitness_goal = request.form.get('goals')
     
-
+    return render_template('index.html')
+ 
 
 if __name__ == "__main__":
     connect_to_db(app)

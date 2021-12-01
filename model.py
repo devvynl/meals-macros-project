@@ -39,7 +39,7 @@ class CaloriesMacros(db.Model):
     user = db.relationship("User", backref="calories_macros")
 
     def __repr__(self):
-        return f"<Calories_macros caloric_id={self.caloric_id} macro_id={self.macro_id}>"
+        return f"<CaloriesMacros caloric_id={self.caloric_id} macro_id={self.macro_id}>"
 
 class Diet(db.Model):
     """ user's diet preference """
@@ -69,23 +69,23 @@ class Goal(db.Model):
     def __repr__(self):
         return f"<Goal goal_id={self.goal_id} fitness_goal={self.fitness_goal}>"
 
-class User_meals(db.Model):
-    """ user's meals created by the user """
+# class User_meals(db.Model):
+#     """ user's meals created by the user """
 
-    __tablename__ = "meals"
+#     __tablename__ = "meals"
 
-    meal_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    meal_name = db.Column(db.String)
-    meal_calories = db.Column(db.Integer)
-    meal_fat = db.Column(db.Integer)
-    meal_carb = db.Column(db.Integer)
-    meal_protein = db.Column(db.Integer)
+#     meal_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+#     meal_name = db.Column(db.String)
+#     meal_calories = db.Column(db.Integer)
+#     meal_fat = db.Column(db.Integer)
+#     meal_carb = db.Column(db.Integer)
+#     meal_protein = db.Column(db.Integer)
 
-    user = db.relationship("User", backref="meals")
+#     user = db.relationship("User", backref="meals")
 
-    def __repr__(self):
-        return f"<User_meals meal_id={self.meal_id} meal_name={self.meal_name} meal_calories={self.meal_calories}>"
+#     def __repr__(self):
+#         return f"<User_meals meal_id={self.meal_id} meal_name={self.meal_name} meal_calories={self.meal_calories}>"
 
 class Food(db.Model):
 
@@ -97,30 +97,28 @@ class Food(db.Model):
     total_fat = db.Column(db.Integer)
     total_carbs = db.Column(db.Integer)
     total_protein = db.Column(db.Integer)
-    food_ounces = db.Column(db.Integer)
-    food_grams = db.Column(db.Integer)
 
     def __repr__(self):
         return f"<Food food_id{self.food_id} food_name{self.food_name}>"
 
-class User_tracking(db.Model):
+# class User_tracking(db.Model):
 
-    __tablename__ = "tracking"
+#     __tablename__ = "tracking"
 
-    tracking_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    food_id = db.Column(db.Integer, db.ForeignKey("foods.food_id"))
-    deduct_daily_calories = db.Column(db.Integer)
-    deduct_daily_macros = db.Column(db.Integer)
-    date = db.Column(db.DateTime)
+#     tracking_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+#     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+#     food_id = db.Column(db.Integer, db.ForeignKey("foods.food_id"))
+#     deduct_daily_calories = db.Column(db.Integer)
+#     deduct_daily_macros = db.Column(db.Integer)
+#     date = db.Column(db.DateTime)
 
-    user = db.relationship("User", backref="tracking")
-    food = db.relationship("Food", backref="tracking")
+#     user = db.relationship("User", backref="tracking")
+#     food = db.relationship("Food", backref="tracking")
 
-    def __repr__(self):
-        return f"<User_tracking tracking_id{self.tracking_id} deduct_daily_calories{self.deduct_daily_calories} deduct_daily_macros{self.deduct_daily_macros}>"
+#     def __repr__(self):
+#         return f"<User_tracking tracking_id{self.tracking_id} deduct_daily_calories{self.deduct_daily_calories} deduct_daily_macros{self.deduct_daily_macros}>"
 
-class User_questions(db.Model):
+class UserQuestions(db.Model):
 
     __tablename__ = 'questions'
 
@@ -135,7 +133,7 @@ class User_questions(db.Model):
     user = db.relationship("User", backref="questions")
 
     def __repr__(self):
-        return f"<User_questions questions_id{self.questions_id}>"
+        return f"<UserQuestions questions_id{self.questions_id}>"
 
 def connect_to_db(flask_app, db_uri="postgresql:///calories", echo=False):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
