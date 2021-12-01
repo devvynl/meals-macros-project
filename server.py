@@ -56,7 +56,7 @@ def tracking():
     tracking = crud.create_tracking()
     return render_template('tracking.html', tracking=tracking)
 
-@app.route('/user' , methods=['POST'])
+@app.route('/user', methods=['POST'])
 def user():
     """create new user"""
     email = request.form.get('email')
@@ -118,8 +118,13 @@ def meals_macros_quiestionare():
     # print(weight)
     activity = request.form.get('activity')
     # return ("success")
+    user_id=session['user_id']
+    if user:
+        flash("already have an account")
+    else: 
+        crud.questionare(age, gender, height, weight, activity)
 
-    return render_template('/fatsecret.html')
+    return render_template('fatsecret.html')
 
 # @app.route('/meal' , methods=['POST'])
 # def meal():

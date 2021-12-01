@@ -33,5 +33,75 @@
         "protein": "7", 
         "carb": "13", 
         "fat": "3"
+    },
+    {
+        "food_name": "apple",
+        "calories": "65", 
+        "protein": "3", 
+        "carb": "22", 
+        "fat": "2"
+    },
+    {
+        "food_name": "orange",
+        "calories": "42", 
+        "protein": "3", 
+        "carb": "19", 
+        "fat": "3"
+    },
+    {
+        "food_name": "strawberry",
+        "calories": "22", 
+        "protein": "1", 
+        "carb": "16", 
+        "fat": "1"
+    },
+    {
+        "food_name": "",
+        "calories": "", 
+        "protein": "", 
+        "carb": "", 
+        "fat": ""
+    }, 
+    {
+        "food_name": "",
+        "calories": "", 
+        "protein": "", 
+        "carb": "", 
+        "fat": ""
+    }, 
+    {
+        "food_name": "",
+        "calories": "", 
+        "protein": "", 
+        "carb": "", 
+        "fat": ""
+    }, 
+    {
+        "food_name": "",
+        "calories": "", 
+        "protein": "", 
+        "carb": "", 
+        "fat": ""
+    }, 
+    {
+        "food_name": "",
+        "calories": "", 
+        "protein": "", 
+        "carb": "", 
+        "fat": ""
+    }, 
+    {
+        "food_name": "",
+        "calories": "", 
+        "protein": "", 
+        "carb": "", 
+        "fat": ""
+    }, 
+    {
+        "food_name": "",
+        "calories": "", 
+        "protein": "", 
+        "carb": "", 
+        "fat": ""
     }
 ]

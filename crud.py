@@ -1,5 +1,6 @@
 """ CRUD operations for meals and macros project """
-from model import db, User, Calories_macros, Diet, Goal, User_meals, Food, User_tracking, connect_to_db
+# from model import db, User, Calories_macros, Diet, Goal, User_meals, Food, User_tracking, connect_to_db
+from model import db, User, connect_to_db 
 
 def create_user(email, password, name, lname):
     """ create a new  user """
@@ -122,7 +123,25 @@ def create_tracking(user, food, deduct_daily_calroies, deduct_daily_macros):
 
     return tracking 
 
+def questionare(gender, age, height, weight, activity):
+
+    """ questionare information """
+
+    questionare_info = User_questions(
+        age=age,
+        gender=gender,
+        height=height,
+        weight=weight,
+        activity=activity
+    )
+
+    db.session.add(questionare_info)
+    db.session.commit()
+
+    return questionare_info 
+
 if __name__ == '__main__':
     from server import app
+    
     connect_to_db(app)
     

@@ -18,14 +18,14 @@ def calculate_bmr(gender, weight, height, age):
             return (4.536 * weight) + (15.88 * height) - (5 * age) - 161
     
 
-def user_activity(low, moderate, high):
-    if activity == "low":
-        activity_level = 1.2
-    elif activity == "moderate":
-        activity_level = 1.5
-    elif activity == "high":
-        activity_level = 1.9
-    return activity_level 
+# def user_activity(low, moderate, high):
+#     if activity == "low":
+#         activity_level = 1.2
+#     elif activity == "moderate":
+#         activity_level = 1.5
+#     elif activity == "high":
+#         activity_level = 1.9
+#     return activity_level 
 
 def calculate_tdee(tdee):
     tdee = (float(bmr) * float(activity))
