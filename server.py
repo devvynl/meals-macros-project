@@ -44,6 +44,11 @@ def calculator_page():
     """calculate user calories and macros page"""
     return render_template('calculator.html')
 
+@app.route('/index')
+def index_page():
+    """" index page with all diaries """
+    return render_template('index.html')
+
 @app.route('/food')
 def food():
     """view food options"""
@@ -106,8 +111,8 @@ def confirm_logout():
     
     return render_template('homepage.html')
 
-@app.route('/questions', methods=['POST'])
-def meals_macros_quiestionare():
+@app.route('/questions', methods=['POST' , 'GET'])
+def meals_macros_questionare():
     gender = request.form.get('gender')
     # print(gender)
     age = request.form.get('age')
@@ -119,19 +124,61 @@ def meals_macros_quiestionare():
     activity = request.form.get('activity')
     # return ("success")
     user_id=session['user_id']
+    questionare_info = crud.questionare(gender, age, height, weight, activity, user_id)
+
     if user:
         flash("already have an account")
     else: 
         crud.questionare(age, gender, height, weight, activity)
 
-    return render_template('index.html')
+    return render_template('profile.html')
 
-@app.route('/goals', methods=['POST'])
-def fitness_goals():
-    fitness_goal = request.form.get('goals')
+# @app.route('/goals', methods=['POST'])
+# def fitness_goals():
+#     fitness_goal = request.form.get('goals')
     
-    return render_template('index.html')
- 
+#     return render_template('index.html', goals=goals)
+
+@app.route('/calculations' , methods=['POST' , 'GET'])
+def calculate_cal_macros():
+    """ calculate user cals and macros """
+    for gender in meals_macros_questionare():
+        if gender == "male":
+            bmr = (4.536 * weight) + (15.88 * height) - (5 * age) + 5
+            return bmr
+        if gender == "female":
+            bmr = (4.536 * weight) + (15.88 * height) - (5 * age) - 161
+            return bmr 
+
+        for activity in meals_macros_questionare():
+            if activity == "low":
+                activity_level = 1.2
+                return activity_level 
+            if activity == "moderate":
+                activity_level = 1.5
+                return activity_level 
+            if activity == "high":
+                activity_level = 1.9
+                return activity_level 
+
+                tdee = (float(bmr) * float(activity))
+                deficit = (float(tdee) - 500)
+                macros = ((protein_goal == (round(deficit * 0.40))), (carb_goal == (round(deficit * 0.40))), (fat_goal == (round(deficit * 0.20))))
+                macro_by_grams =  ((round(protein_goal / 4)), (round(carb_goal / 4)),(round(fat_goal / 9)))
+
+                flash(f"Your daily caloric goal is: {deifict} and your daily macro goals are {macros_by_grams}")
+
+                # user_id=session['user_id']
+    # calculator_info = crud.new_calculator(tdee, deficit, macros, user_id, questions_id, protein_goal, fat_goal, carb_goal)
+
+            if user:
+                flash("already have an account")
+            else:
+                crud.crud.new_calculator(tdee, deficit, macros, protein_goal, fat_goal, carb_goal)
+
+        return render_template('results.html')
+
+    
 
 if __name__ == "__main__":
     connect_to_db(app)

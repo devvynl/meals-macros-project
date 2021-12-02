@@ -34,7 +34,7 @@ def create_cals_macros(user, daily_caloric_intake, daily_protein_goal, daily_car
 
     """ create calorie and macros """
 
-    calories_and_macros = Calories_macros(
+    calories_and_macros = CaloriesMacros(
         user=user,
         daily_caloric_intake=daily_caloric_intake, 
         daily_protein_goal=daily_protein_goal, 
@@ -120,16 +120,17 @@ def create_tracking(user, food, deduct_daily_calroies, deduct_daily_macros):
 
     return tracking 
 
-def questionare(gender, age, height, weight, activity):
+def questionare(gender, age, height, weight, activity, user_id):
 
     """ questionare information """
 
-    questionare_info = User_questions(
+    questionare_info = UserQuestions(
         age=age,
         gender=gender,
         height=height,
         weight=weight,
-        activity=activity
+        activity=activity,
+        user_id=user_id
     )
 
     db.session.add(questionare_info)
@@ -137,6 +138,25 @@ def questionare(gender, age, height, weight, activity):
 
     return questionare_info 
 
+def new_calculator(tdee, deficit, macros, user_id, questions_id, protein_goal, fat_goal, carb_goal):
+
+    """calculate user calories and macros"""
+
+    calculator_info = UserCalculcations(
+        tdee=tdee,
+        deficit=deficit,
+        macros=macros,
+        user_id=user_id,
+        questions_id=questions_id,
+        protein_goal=protein_goal,
+        fat_goal=fat_goal,
+        carb_goal=carb_goal 
+    )
+
+    db.session.add(calculator_info)
+    db.session.commit()
+
+    return calculator_info 
 
 if __name__ == '__main__':
     from server import app

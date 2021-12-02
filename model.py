@@ -125,7 +125,7 @@ class UserQuestions(db.Model):
     questions_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     age = db.Column(db.Integer)
-    gender = db.Column(db.Integer)
+    gender = db.Column(db.String)
     height = db.Column(db.Integer)
     weight = db.Column(db.Integer)
     activity = db.Column(db.String)
@@ -133,7 +133,27 @@ class UserQuestions(db.Model):
     user = db.relationship("User", backref="questions")
 
     def __repr__(self):
-        return f"<UserQuestions questions_id{self.questions_id}>"
+        return f"<UserQuestions questions_id{self.questions_id} user_id={self.user_id}>"
+
+class UserCalculations(db.Model):
+
+    __tablename__ = 'calculations'
+
+    calculations_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    tdee = db.Column(db.Integer)
+    deficit = db.Column(db.Integer)
+    macros = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    questions_id = db.Column(db.Integer, db.ForeignKey("questions.questions_id"))
+    protein_goal = db.Column(db.Integer)
+    fat_goal = db.Column(db.Integer)
+    carb_goal = db.Column(db.Integer)
+
+    user = db.relationship('User', backref="calculations")
+    userquestions = db.relationship('UserQuestions' , backref='calculations')
+
+    def __repr__(self):
+        return f"<UserCalculations calculations_id{self.calculations_id} user_id={self.user_id} questions_id={self.questions_id}>"
 
 def connect_to_db(flask_app, db_uri="postgresql:///calories", echo=False):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
