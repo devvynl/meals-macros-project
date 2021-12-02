@@ -1,9 +1,33 @@
 {% extends 'base.html' %} 
 
-% block title %} Meals & Macros {% endblock %}
+{% block title %} Meals & Macros {% endblock %}
 {% block body %}
-<h1> Meals & Macros Exercise Fitness Goals </h1>
-
-
-    
+<h1> Meals & Macros Fitness Goals </h1>
+<p>
+    <h2>Select all your fitness goals:</h2>
+</p>
+<div class='row'> 
+    <form action='/goals' method='POST'>
+        <fieldset> 
+            <legend>Fitness Goals</legend>
+            <input type='checkbox' name="fitness_goal" id="strength" value="strength">
+            <label for="strength">Strength</label><br>
+            <input type='checkbox' name="fitness_goal" id="running" value="running">
+            <label for="running">Running</label><br>
+            <input type='checkbox' name="fitness_goal" id="weight_loss" value="weight_loss">
+            <label for="weight_loss">Weight Loss</label><br>
+            <input type='checkbox' name="fitness_goal" id="consistency" value="consistency">
+            <label for="consistency">Consistency</label><br>
+            <input type='checkbox' name="fitness_goal" id="stretching" value="stretching">
+            <label for="stretching">Stretching</label><br>
+            <input type='checkbox' name="fitness_goal" id="high_intensity_training" value="high_intensity_training">
+            <label for="high_intensity_training">High Intensity Training</label><br>
+            <input type='checkbox' name="fitness_goal" id="nutrition" value="nutrition">
+            <label for="nutrition">Nutrition</label><br>
+            <input type='checkbox' name="fitness_goal" id="overall_health" value="overall_health">
+            <label for="overall_health">Overall Health</label><br>
+        </fieldset>
+        <input type='submit' value='Submit'>
+</div>
+</form>
 {% endblock %} 

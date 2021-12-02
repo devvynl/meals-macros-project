@@ -58,11 +58,21 @@ def create_diet(diet, user):
 
     return diet 
 
-def create_goal(user,fitness_goal):
+def create_goal(user_id, strength, running, weight_loss, consistency, stretching, high_intensity_training, nutrition, overall_health):
 
     """ create user fitness goal """
 
-    goal = Goal(fitness_goal=fitness_goal, user=user)
+    goal = Goal(
+        user_id=user_id,
+        strength=strength,
+        running=running,
+        weight_loss=weight_loss,
+        consistency=consistency,
+        stretching=stretching, 
+        high_intensity_training=high_intensity_training,
+        nutrition=nutrition,
+        overall_health=overall_health
+    )
 
     db.session.add(goal)
     db.session.commit()
@@ -87,22 +97,24 @@ def create_goal(user,fitness_goal):
 
 #     return meal 
 
-def create_food(food_name, food_calories, total_fat, total_carb, total_protein):
+def create_food(food_name, calories, fat, carb, protein, user_id):
 
     """ create food for user to use for tracking """ 
 
     food = Food( 
         food_name=food_name,
-        food_calories=food_calories,
-        total_fat=total_fat,
-        total_carb=total_carb,
-        total_protein=total_protein,
+        calories=calories,
+        fat=fat,
+        carb=carb,
+        protein=protein,
+        user_id=user_id
     )
 
     db.session.add(food)
     db.session.commit()
 
     return food
+
 
 def create_tracking(user, food, deduct_daily_calroies, deduct_daily_macros):
 

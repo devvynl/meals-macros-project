@@ -61,13 +61,21 @@ class Goal(db.Model):
     __tablename__ = "goals"
 
     goal_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    fitness_goal = db.Column(db.String)
+    # fitness_goal = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    strength = db.Column(db.String)
+    running = db.Column(db.String)
+    weight_loss = db.Column(db.String)
+    consistency = db.Column(db.String)
+    stretching = db.Column(db.String)
+    high_intensity_training = db.Column(db.String)
+    nutrition = db.Column(db.String)
+    overall_health = db.Column(db.String)
 
     user = db.relationship("User", backref="goals")
 
     def __repr__(self):
-        return f"<Goal goal_id={self.goal_id} fitness_goal={self.fitness_goal}>"
+        return f"<Goal goal_id={self.goal_id} fitness_goal={self.fitness_goal} user_id={self.user_id}>"
 
 # class User_meals(db.Model):
 #     """ user's meals created by the user """
@@ -92,14 +100,17 @@ class Food(db.Model):
     __tablename__ = "foods"
 
     food_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     food_name = db.Column(db.String)
-    total_calories = db.Column(db.Integer)
-    total_fat = db.Column(db.Integer)
-    total_carbs = db.Column(db.Integer)
-    total_protein = db.Column(db.Integer)
+    calories = db.Column(db.Integer)
+    fat = db.Column(db.Integer)
+    carb = db.Column(db.Integer)
+    protein = db.Column(db.Integer)
+
+    user = db.relationship("User", backref="foods")
 
     def __repr__(self):
-        return f"<Food food_id{self.food_id} food_name{self.food_name}>"
+        return f"<Food food_id{self.food_id} user_id={self.user_id}>"
 
 # class User_tracking(db.Model):
 

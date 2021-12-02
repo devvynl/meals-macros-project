@@ -49,11 +49,19 @@ def index_page():
     """" index page with all diaries """
     return render_template('index.html')
 
-@app.route('/food')
-def food():
+@app.route('/food', methods=['POST' , 'GET'])
+def foods():
     """view food options"""
-    food = crud.create_food()
-    return render_template('food.html', food=food)
+    food_name = request.form.get('food_name')
+    calories = request.form.get('calories')
+    protein = request.form.get('protein')
+    carb = request.form.get('carb')
+    fat = request.form.get('fat')
+
+    user_id = session['user_id']
+    food = crud.create_food(food_name, calories, protein, carb, fat, user_id)
+
+    return render_template('food.html')
 
 # @app.route('/tracking')
 # def tracking():
@@ -133,50 +141,61 @@ def meals_macros_questionare():
 
     return render_template('profile.html')
 
-# @app.route('/goals', methods=['POST'])
-# def fitness_goals():
-#     fitness_goal = request.form.get('goals')
+@app.route('/goals', methods=['POST' , 'GET'])
+def fitness_goals():
+    # fitness_goal = request.form.get('goals')
+    strength = request.form.get('strength')
+    running = request.form.get('running')
+    weight_loss = request.form.get('weight_loss')
+    consistency = request.form.get('consistency')
+    stretching = request.form.get('stretching')
+    high_intensity_training = request.form.get('high_intensity_training')
+    nutrition = request.form.get('nutrition')
+    overall_health = request.form.get('overall_health')
+
+    user_id=session['user_id']
+    goal = crud.create_goal(user_id, strength, running, weight_loss, consistency, stretching, high_intensity_training, nutrition, overall_health)
     
-#     return render_template('index.html', goals=goals)
+    return render_template('goals.html')
 
-@app.route('/calculations' , methods=['POST' , 'GET'])
-def calculate_cal_macros():
-    """ calculate user cals and macros """
-    for gender in meals_macros_questionare():
-        if gender == "male":
-            bmr = (4.536 * weight) + (15.88 * height) - (5 * age) + 5
-            return bmr
-        if gender == "female":
-            bmr = (4.536 * weight) + (15.88 * height) - (5 * age) - 161
-            return bmr 
+# @app.route('/calculations' , methods=['POST' , 'GET'])
+# def calculate_cal_macros():
+#     """ calculate user cals and macros """
+#     for gender in meals_macros_questionare():
+#         if gender == "male":
+#             bmr = (4.536 * weight) + (15.88 * height) - (5 * age) + 5
+#             return bmr
+#         if gender == "female":
+#             bmr = (4.536 * weight) + (15.88 * height) - (5 * age) - 161
+#             return bmr 
 
-        for activity in meals_macros_questionare():
-            if activity == "low":
-                activity_level = 1.2
-                return activity_level 
-            if activity == "moderate":
-                activity_level = 1.5
-                return activity_level 
-            if activity == "high":
-                activity_level = 1.9
-                return activity_level 
+#         for activity in meals_macros_questionare():
+#             if activity == "low":
+#                 activity_level = 1.2
+#                 return activity_level 
+#             if activity == "moderate":
+#                 activity_level = 1.5
+#                 return activity_level 
+#             if activity == "high":
+#                 activity_level = 1.9
+#                 return activity_level 
 
-                tdee = (float(bmr) * float(activity))
-                deficit = (float(tdee) - 500)
-                macros = ((protein_goal == (round(deficit * 0.40))), (carb_goal == (round(deficit * 0.40))), (fat_goal == (round(deficit * 0.20))))
-                macro_by_grams =  ((round(protein_goal / 4)), (round(carb_goal / 4)),(round(fat_goal / 9)))
+#                 tdee = (float(bmr) * float(activity))
+#                 deficit = (float(tdee) - 500)
+#                 macros = ((protein_goal == (round(deficit * 0.40))), (carb_goal == (round(deficit * 0.40))), (fat_goal == (round(deficit * 0.20))))
+#                 macro_by_grams =  ((round(protein_goal / 4)), (round(carb_goal / 4)),(round(fat_goal / 9)))
 
-                flash(f"Your daily caloric goal is: {deifict} and your daily macro goals are {macros_by_grams}")
+#                 flash(f"Your daily caloric goal is: {deifict} and your daily macro goals are {macros_by_grams}")
 
-                # user_id=session['user_id']
-    # calculator_info = crud.new_calculator(tdee, deficit, macros, user_id, questions_id, protein_goal, fat_goal, carb_goal)
+#                 user_id=session['user_id']
+#                 calculator_info = crud.new_calculator(tdee, deficit, macros, user_id, questions_id, protein_goal, fat_goal, carb_goal)
 
-            if user:
-                flash("already have an account")
-            else:
-                crud.crud.new_calculator(tdee, deficit, macros, protein_goal, fat_goal, carb_goal)
+#             if user:
+#                 flash("already have an account")
+#             else:
+#                 crud.new_calculator(tdee, deficit, macros, protein_goal, fat_goal, carb_goal)
 
-        return render_template('results.html')
+#         return render_template('results.html')
 
     
 

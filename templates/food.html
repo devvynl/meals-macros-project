@@ -1,9 +1,44 @@
 {% extends 'base.html' %} 
 
-% block title %} Meals & Macros {% endblock %}
+{% block title %} Meals & Macros {% endblock %}
 {% block body %}
-<h1> Meals & Macros Exercise Food Diary </h1>
-
-
-    
+<h1> Meals & Macros Food Diary </h1>
+<p>
+    <h2>Enter your food throughout the day here:</h2>
+</p>
+<div class='row'> 
+    <form action='/food' method='POST'>
+        <fieldset> 
+            <legend>Name of food</legend>
+            <input type='text' name="food_name" id="food_name">
+        </fieldset>
+</div>
+<div class='row'>
+        <fieldset> 
+            <legend>Calories</legend>
+            <input type='number' name="calories" id="calorie">
+        </fieldset>
+</div>
+<div class='row'>
+        <fieldset> 
+            <legend>Protein</legend>
+            <input type='number' name="protein" id="protein">
+        </fieldset>
+</div>
+<div class='row'> 
+        <fieldset> 
+            <legend>Carb</legend>
+            <input type='number' name="carb" id="carb">
+        </fieldset>  
+</div>
+<div class='row'> 
+        <fieldset> 
+            <legend>Fat</legend>
+            <input type='number' name="fat" id="fat">
+        </fieldset>
+</div>
+<div class="row">
+    <input type="submit" value="Add Food" />
+</div>
+</form>
 {% endblock %} 
