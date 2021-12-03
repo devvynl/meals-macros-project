@@ -2,28 +2,36 @@
 
 {% block title %} Meals & Macros Profile {% endblock %}
 {% block body %}
-<h1> Meals & Macros Profile Page</h1>
+<h1> Welcome {{ session["name"] }} to The Meals & Macros Profile Page</h1>
 
-<h2> View your results here:</h2>
- <p>
+
+<h2>Please complete this questionare to calculate your daily calories and macros:</h2>
+<a href="/calculator">Meals & Macros Calculator</a>
+
+<h3> View your results here:</h3>
  <a href="/calculations">Results</a>
- </p>
-
-<h2> Food </h2>
+ 
+<h4> Food </h4>
+<ul class="nav navbar-nav navbar-right">
     <li><a id="nav-food" href="/food">Food Diary</a></li>
+</ul>
 
-
-<h2> Exercise </h2>
+<h4> Exercise </h4>
+<ul class="nav navbar-nav navbar-right">
     <li><a id="nav-exercise" href="/exercise">Exercise Diary</a></li>
+</ul>
 
-<h2> Weight </h2>
+<h4> Weight </h4>
+<ul class="nav navbar-nav navbar-right">
     <li><a id="nav-weight" href="/weight">Weight Tracker</a></li>
+</ul>
 
-<h2> Fitness Goals </h2>
+<h4> Fitness Goals </h4>
+<ul class="nav navbar-nav navbar-right">
     <li><a id="nav-goals" href="/goals">Fitness Goals</a></li>
+</ul>
 
-
-<h2> To Log Out please click here </h2>
+<h3> To Log Out please click here </h3>
 <ul class="nav navbar-nav navbar-right">
     <li><a id="nav-logout" href="/logout">Logout</a></li>
 </ul>   

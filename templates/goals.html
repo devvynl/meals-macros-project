@@ -28,6 +28,11 @@
             <label for="overall_health">Overall Health</label><br>
         </fieldset>
         <input type='submit' value='Submit'>
-</div>
+</div><br>
+{% for goal in goals %}
+<li><a>Your Current Fitness Goals: <br>
+    <span class="badge">{{ goal }}</span></a></li><br>
+</ul>
+{% endfor %}
 </form>
 {% endblock %} 

@@ -70,7 +70,7 @@ class Goal(db.Model):
     user = db.relationship("User", backref="goals")
 
     def __repr__(self):
-        return f"<Goal goal_id={self.goal_id} fitness_goal={self.fitness_goal} user_id={self.user_id}>"
+        return f"<Goal goal_id={self.goal_id} user_id={self.user_id}>"
 
 # class User_meals(db.Model):
 #     """ user's meals created by the user """
@@ -106,22 +106,6 @@ class Food(db.Model):
 
     def __repr__(self):
         return f"<Food food_id{self.food_id} user_id={self.user_id}>"
-
-# class GetFood(db.Model):
-
-#     __tablename__ = "user_foods"
-
-#     user_food_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-#     food_id =db.Column(db.Integer, db.ForeignKey("foods.food_id"))
-
-#     user = db.relationship("User", backref="user_foods")
-#     food = db.relationship("Food", backref="user_foods")
-
-#     def __repr__(self):
-#         return f"<GetFood user_food_id{self.user_food_id} user_id={self.user_id} food_id={self.food_id}>"
-
-
 
 # class Exercise(db.Model):
 

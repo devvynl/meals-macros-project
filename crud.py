@@ -87,6 +87,10 @@ def create_goal(user_id, strength, running, weight_loss, consistency, stretching
 
     return goal 
 
+def get_goals(user_id):
+    """ returns all food """
+    return Goal.query.filter(Goal.user_id == user_id).all()
+
 # def create_meal(user, meal_name, meal_calories, meal_protein, meal_carb, meal_fat):
 
 #     """ create user meals """
