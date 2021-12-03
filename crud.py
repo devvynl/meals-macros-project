@@ -29,11 +29,14 @@ def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()
 
-def get_food(user_id):
+def get_all_food(user_id):
+    """ returns all food """
+    return Food.query.filter(Food.user_id == user_id).all()
+    
+    
+def get_food(food_name):
     """ returns all food """
     return Food.query.filter(Food.food_name == food_name).all()
-
-
 
 def create_cals_macros(user, daily_caloric_intake, daily_protein_goal, daily_carb_goal, daily_fat_goal):
 
@@ -119,21 +122,6 @@ def create_food(food_name, calories, fat, carb, protein, user_id):
     db.session.commit()
 
     return food
-
-def get_food(food_name):
-    """ returns all food """
-    return Food.query.filter(Food.food_name == food_name).all()
-
-
-    # user_id=user_id
-  
-    # food_list=[]
-
-    # foods=db.session.query(Food).filter(Food.user_id == user_id )
-    
-
-    # print(foods)
-
 
 def create_tracking(user, food, deduct_daily_calroies, deduct_daily_macros):
 

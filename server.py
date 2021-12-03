@@ -62,17 +62,16 @@ def foods():
 
     food = crud.create_food(food_name, calories, protein, carb, fat, user_id)
     foods = crud.get_food(food_name)
-    # logged_food= crud.get_food(user_id)
-
+       
     return render_template('food.html' , foods=foods)
 
-# @app.route('/all_food')
-# def all_foods():
-#     """ view all food items """
-#     foods = crud.get_food()
-#     return render_template('all_food.html', foods=foods)
+@app.route('/all_food')
+def all_foods():
+    user_id = session['user_id']
+    all_food=crud.get_all_food(user_id)
 
-
+    return render_template('all_food.html', all_food=all_food)
+    
 @app.route('/user', methods=['POST'])
 def user():
     """create new user"""

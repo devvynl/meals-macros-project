@@ -1,15 +1,14 @@
-<!-- {% extends 'base.html' %}  
+{% extends 'base.html' %}  
 {% block title %} All Food Items {% endblock %} 
 
 {% block body %}
 
-<ul>
-    {% for food in foods %}
-<li>
-    <a href='/food/ {{food.food_id}}'>
-        {{ food.food_name }}
-    </a>
-</li>
-{% endfor %}
-</ul>
-{% endblock body %} -->
+        {% for i in all_food %}
+        {{i.food_name}}
+        {{i.calories}}
+        {{i.protein}}
+        {{i.carb}}
+        {{i.fat}}
+        {% endfor %}
+        
+{% endblock body %}
