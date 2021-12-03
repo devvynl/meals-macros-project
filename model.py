@@ -13,11 +13,6 @@ class User(db.Model):
     lname = db.Column(db.String(50))
     email = db.Column(db.String(80), unique=True)
     password = db.Column(db.String(50))
-    # weight = db.Column(db.Integer)
-    # height = db.Column(db.Integer)
-    # age = db.Column(db.Integer)
-    # fitness_goal = db.Column(db.String)
-    # goal_weight = db.Column(db.Integer)
 
     def __repr__(self):
         return f"<User user_id={self.user_id} email={self.email}>"
@@ -110,7 +105,7 @@ class Food(db.Model):
     user = db.relationship("User", backref="foods")
 
     def __repr__(self):
-        return f"<Food food_id{self.food_id} user_id={self.user_id}>"
+        return f"<Food food_id{self.food_id} food_name={self.food_name} user_id={self.user_id}>"
 
 # class User_tracking(db.Model):
 

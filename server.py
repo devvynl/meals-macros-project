@@ -51,7 +51,7 @@ def index_page():
 
 @app.route('/food', methods=['POST' , 'GET'])
 def foods():
-    """view food options"""
+    """enter food items in food diary """
     food_name = request.form.get('food_name')
     calories = request.form.get('calories')
     protein = request.form.get('protein')
@@ -59,15 +59,19 @@ def foods():
     fat = request.form.get('fat')
 
     user_id = session['user_id']
+
     food = crud.create_food(food_name, calories, protein, carb, fat, user_id)
+    foods = crud.get_food(food_name)
+    # logged_food= crud.get_food(user_id)
 
-    return render_template('food.html')
+    return render_template('food.html' , foods=foods)
 
-# @app.route('/tracking')
-# def tracking():
-#     """show users tracking"""
-#     tracking = crud.create_tracking()
-#     return render_template('tracking.html', tracking=tracking)
+# @app.route('/all_food')
+# def all_foods():
+#     """ view all food items """
+#     foods = crud.get_food()
+#     return render_template('all_food.html', foods=foods)
+
 
 @app.route('/user', methods=['POST'])
 def user():
@@ -104,7 +108,7 @@ def login():
     else:
         session['user_id'] = user.user_id
         session['name'] = user.name
-        flash(f"Welcome, {user.name}!")
+        flash(f"Successfully logged in!")
     
     return render_template('profile.html' , user=user)
 

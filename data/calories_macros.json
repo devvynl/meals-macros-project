@@ -56,52 +56,52 @@
         "fat": "1"
     },
     {
-        "food_name": "",
-        "calories": "", 
-        "protein": "", 
-        "carb": "", 
-        "fat": ""
+        "food_name": "bagel",
+        "calories": "310", 
+        "protein": "4", 
+        "carb": "14", 
+        "fat": "6"
     }, 
     {
-        "food_name": "",
-        "calories": "", 
-        "protein": "", 
-        "carb": "", 
-        "fat": ""
+        "food_name": "rice",
+        "calories": "147", 
+        "protein": "2", 
+        "carb": "12", 
+        "fat": "3"
     }, 
     {
-        "food_name": "",
-        "calories": "", 
-        "protein": "", 
-        "carb": "", 
-        "fat": ""
+        "food_name": "cheese",
+        "calories": "80", 
+        "protein": "3", 
+        "carb": "2", 
+        "fat": "7"
     }, 
     {
-        "food_name": "",
-        "calories": "", 
-        "protein": "", 
-        "carb": "", 
-        "fat": ""
+        "food_name": "coffee",
+        "calories": "0", 
+        "protein": "0", 
+        "carb": "0", 
+        "fat": "0"
     }, 
     {
-        "food_name": "",
-        "calories": "", 
-        "protein": "", 
-        "carb": "", 
-        "fat": ""
+        "food_name": "coke zero",
+        "calories": "0", 
+        "protein": "0", 
+        "carb": "0", 
+        "fat": "0"
     }, 
     {
-        "food_name": "",
-        "calories": "", 
-        "protein": "", 
-        "carb": "", 
-        "fat": ""
+        "food_name": "water",
+        "calories": "0", 
+        "protein": "0", 
+        "carb": "0", 
+        "fat": "0"
     }, 
     {
-        "food_name": "",
-        "calories": "", 
-        "protein": "", 
-        "carb": "", 
-        "fat": ""
+        "food_name": "pizza",
+        "calories": "210", 
+        "protein": "5", 
+        "carb": "13", 
+        "fat": "10"
     }
 ]

@@ -6,6 +6,8 @@
 <p>
     <h2>Enter your food throughout the day here:</h2>
 </p>
+
+<body>
 <div class='row'> 
     <form action='/food' method='POST'>
         <fieldset> 
@@ -16,7 +18,7 @@
 <div class='row'>
         <fieldset> 
             <legend>Calories</legend>
-            <input type='number' name="calories" id="calorie">
+            <input type='number' name="calories" id="calories">
         </fieldset>
 </div>
 <div class='row'>
@@ -37,8 +39,24 @@
             <input type='number' name="fat" id="fat">
         </fieldset>
 </div>
+<p> 
 <div class="row">
-    <input type="submit" value="Add Food" />
+    <input type="submit" value="Add Food"/>
 </div>
+</p>
+        {% for food in foods %}
+        <li class="badge"><a>{{ food.food_name }}</a></li>
+        <li><a>Protein: <span class="badge">{{ food.protein }}</span></a></li>
+        <li><a>Carbohydrates: <span class="badge">{{ food.carb }}</span></a></li>
+        <li><a>Fat: <span class="badge">{{ food.fat }}</span></a></li>
+        <li><a>Calories: <span class="badge">{{ food.calories }}</span></a></li><br>
+        </ul>
+        {% endfor %}
+
+<!-- <h2>Food List</h2>
+<ul>
+    <li><a href="/all_food">View all food items</a></li>
+</ul> -->
 </form>
+</body>
 {% endblock %} 
