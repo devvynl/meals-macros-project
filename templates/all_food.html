@@ -2,13 +2,21 @@
 {% block title %} All Food Items {% endblock %} 
 
 {% block body %}
-
+<div class="row">
+    <fieldset>
         {% for i in all_food %}
-        {{i.food_name}}
-        {{i.calories}}
-        {{i.protein}}
-        {{i.carb}}
-        {{i.fat}}
+        FOOD: {{i.food_name}} <br>
+        CALORIES: {{i.calories}} <br>
+        PROTEIN: {{i.protein}} <br>
+        CARB: {{i.carb}} <br>
+        FAT: {{i.fat}} <br>
         {% endfor %}
+    </fieldset>
+</div>
         
+<div>
+    <fieldset>
+        
+    </fieldset>
+</div>
 {% endblock body %}
