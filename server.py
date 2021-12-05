@@ -122,8 +122,44 @@ def confirm_logout():
     
     return render_template('homepage.html')
 
-@app.route('/questions', methods=['POST' , 'GET'])
+##### returning max recursion error- need to fix
+def calculate_cal_macros(gender, age, height, weight, activity):
+    """ calculate user cals and macros """
+    age = int(age)
+    height = int(height)
+    weight = int(weight)
+    
+    # for gender in meals_macros_questionare():
+    if gender == "male":
+        bmr = (4.536 * weight) + (15.88 * height) - (5 * age) + 5
+            
+    elif gender == "female":
+        bmr = (4.536 * weight) + (15.88 * height) - (5 * age) - 161
+            
+     
+    if activity == "low":
+        activity_level = 1.2
+                
+    elif activity == "moderate":
+        activity_level = 1.5
+            
+    elif activity == "high":
+        activity_level = 1.9
+            
+    tdee = (float(bmr) * float(activity_level))
+    deficit = (float(tdee) - 500)
+    protein_goal = round(deficit * 0.40)
+    carb_goal = round(deficit * 0.40)
+    fat_goal = round(deficit * 0.20)
+    protein_macros = round(protein_goal / 4)
+    carb_macros = round(carb_goal / 4)
+    fat_macros = round(fat_goal / 9)
+    
+    return (deficit, protein_macros, carb_macros, fat_macros)
+
+@app.route('/questions', methods=['POST'])
 def meals_macros_questionare():
+    
     gender = request.form.get('gender')
     # print(gender)
     age = request.form.get('age')
@@ -134,17 +170,20 @@ def meals_macros_questionare():
     # print(weight)
     activity = request.form.get('activity')
     # return ("success")
-    user_id=session['user_id']
-    questionare_info = crud.questionare(gender, age, height, weight, activity, user_id)
-    # result = calculate_cal_macros(gender, age, height, weight, activity)
-    # result = (f"Your daily caloric goal is: {deifict} and your daily macro goals are {macros_by_grams}")
+    user_id = session.get('user_id')
     
-    if user:
-        redirect('/index')
-    else: 
-        crud.questionare(age, gender, height, weight, activity)
+    print(gender, age, height, weight, activity, user_id)
+    questionare_info = crud.questionare(gender, age, height, weight, activity, user_id)
+    result = calculate_cal_macros(gender, age, height, weight, activity)
+    print(f"Your daily caloric goal is: {result[0]} and your daily macro goals are {result[1]}, {result[2]}, {result[3]}")
 
-    return render_template('index.html')
+
+    if not user_id:
+        return redirect('/login')
+    else: 
+        crud.questionare(gender, age, height, weight, activity, user_id)
+    return render_template('/results.html', deficit=result[0], macros_by_grams=result[1:])
+    
 
 @app.route('/goals', methods=['POST'])
 def fitness_goals():
@@ -183,36 +222,6 @@ def get_user_goals():
 #     user_id =session['user_id']
 
 #     return render_template('exercise.html')
-
-##### returning max recursion error- need to fix
-# def calculate_cal_macros(gender, age, height, weight, activity):
-#     """ calculate user cals and macros """
-#     for gender in meals_macros_questionare():
-#         if gender == "male":
-#             bmr = (4.536 * weight) + (15.88 * height) - (5 * age) + 5
-            
-#         if gender == "female":
-#             bmr = (4.536 * weight) + (15.88 * height) - (5 * age) - 161
-            
-
-#         for activity in meals_macros_questionare():
-#             if activity == "low":
-#                 activity_level = 1.2
-                
-#             if activity == "moderate":
-#                 activity_level = 1.5
-            
-#             if activity == "high":
-#                 activity_level = 1.9
-            
-
-#         tdee = (float(bmr) * float(activity))
-#         deficit = (float(tdee) - 500)
-#         macros = ((protein_goal == (round(deficit * 0.40))), (carb_goal == (round(deficit * 0.40))), (fat_goal == (round(deficit * 0.20))))
-#         macro_by_grams =  (('PROTEIN:'),(round(protein_goal / 4)), ('CARB:'),(round(carb_goal / 4)), ('FAT:'),(round(fat_goal / 9)))
-
-#         return deficit and macros_by_grams
-    
 
 if __name__ == "__main__":
     connect_to_db(app)
