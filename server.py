@@ -9,12 +9,25 @@ import os
 
 from jinja2 import StrictUndefined
 
+# FOOD_QUOTES = [
+#     "Be Better - Kobe",
+#     "You may not be there yet, but you're closer than you were yesterday!", 
+#     "It's a beautiful day to be alive!", 
+#     "Eating well is a form of self respect", 
+#     "Hard work pays off!"
+# ]
+
 app = Flask(__name__)
 app.secret_key = "dev"
 # fs = Fatsecret(consumer_key, consumer_secret)
 app.jinja_env.undefined = StrictUndefined
 
 # API_KEY = os.environ['MYFITNESSPAL_KEY']
+
+# @app.route('/food-quotes')
+# def quotes():
+#     """famous fitness quotes for food diary page"""
+#     return random.choice(FOOD_QUOTES)
 
 @app.route('/')
 def homepage():
@@ -182,7 +195,7 @@ def meals_macros_questionare():
         return redirect('/login')
     else: 
         crud.questionare(gender, age, height, weight, activity, user_id)
-    return render_template('/results.html', deficit=result[0], macros_by_grams=result[1:])
+    return render_template('results.html', deficit=result[0], macros_by_grams=result[1:])
     
 
 @app.route('/goals', methods=['POST'])

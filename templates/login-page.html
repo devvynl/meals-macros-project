@@ -3,9 +3,9 @@
 {% block title %} Login {% endblock %}
 
 {% block body %} 
+<br>
+<h2>Create an Account</h2>
 
-<h1>Create Account</h1>
-<h2>Enter your email to create an account</h2>
 <form action="/user" method="POST">
     <p> 
         First Name <input type="text" name="name"> 
@@ -22,9 +22,10 @@
     <p>
         <input type="submit">
     </p>
-</form>
+</form><br><br>
 
-<!-- <h2>Current User --> Log In</h2> -->
+<h2>Log In</h2>
+
 <form action="/login" method="POST">
 <p>
     Email <input type="text" name="email">
