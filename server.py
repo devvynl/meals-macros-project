@@ -120,9 +120,16 @@ def login():
     else:
         session['user_id'] = user.user_id
         session['name'] = user.name
-        flash(f"Successfully logged in!")
+        
     
-    return render_template('index.html' , user=user)
+    return render_template('deficit-macros.html' , user=user)
+
+# @app.route('/login')
+# def already_a_user():
+#     if session['user_id'] = user.user_id
+
+#     redirect('/index')
+
 
 @app.route('/logout')
 def confirm_logout():
@@ -135,7 +142,7 @@ def confirm_logout():
     
     return render_template('homepage.html')
 
-##### returning max recursion error- need to fix
+
 def calculate_cal_macros(gender, age, height, weight, activity):
     """ calculate user cals and macros """
     age = int(age)
@@ -160,7 +167,7 @@ def calculate_cal_macros(gender, age, height, weight, activity):
         activity_level = 1.9
             
     tdee = (float(bmr) * float(activity_level))
-    deficit = (float(tdee) - 500)
+    deficit = round(float(tdee) - 500)
     protein_goal = round(deficit * 0.40)
     carb_goal = round(deficit * 0.40)
     fat_goal = round(deficit * 0.20)
@@ -168,7 +175,7 @@ def calculate_cal_macros(gender, age, height, weight, activity):
     carb_macros = round(carb_goal / 4)
     fat_macros = round(fat_goal / 9)
     
-    return (deficit, protein_macros, carb_macros, fat_macros)
+    return (deficit, 'protein:',protein_macros, 'carb:',carb_macros, 'fat:',fat_macros)
 
 @app.route('/questions', methods=['POST'])
 def meals_macros_questionare():
@@ -185,17 +192,17 @@ def meals_macros_questionare():
     # return ("success")
     user_id = session.get('user_id')
     
-    print(gender, age, height, weight, activity, user_id)
+    # print(gender, age, height, weight, activity, user_id)
     questionare_info = crud.questionare(gender, age, height, weight, activity, user_id)
     result = calculate_cal_macros(gender, age, height, weight, activity)
-    print(f"Your daily caloric goal is: {result[0]} and your daily macro goals are {result[1]}, {result[2]}, {result[3]}")
+    # print(f"Your daily caloric goal is: {result[0]} and your daily macro goals are {result[1]}, {result[2]}, {result[3]}")
 
 
     if not user_id:
         return redirect('/login')
     else: 
         crud.questionare(gender, age, height, weight, activity, user_id)
-    return render_template('results.html', deficit=result[0], macros_by_grams=result[1:])
+    return render_template('index.html', deficit=result[0], macros_by_grams=result[1:])
     
 
 @app.route('/goals', methods=['POST'])

@@ -2,14 +2,16 @@
 
 {% block title %} Meals & Macros Profile {% endblock %}
 {% block body %}
-<h1> Welcome {{ session["name"] }} to The Meals & Macros Profile Page</h1>
+<h1> Hi {{ session["name"] }} ! </h1>
+<h2> Welcome to your Meals & Macros Profile Page</h2>
 
 
-<h2>Please complete this questionare to calculate your daily calories and macros:</h2>
-<a href="/calculator">Meals & Macros Calculator</a>
+<!-- <h2>Please complete this questionare to calculate your daily calories and macros:</h2>
+<a href="/calculator">Meals & Macros Calculator</a><br> -->
 
-<h3> View your results here:</h3>
- <a href="/questions">Results</a>
+<h1> Your daily calories: {{ deficit }} </h1>
+<h1> Your daily macros in grams: {{ macros_by_grams }} </h1>
+
  
 <h4> Food </h4>
 <ul class="nav navbar-nav navbar-right">
