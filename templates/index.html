@@ -3,15 +3,11 @@
 {% block title %} Meals & Macros Profile {% endblock %}
 {% block body %}
 <h1> Hi {{ session["name"] }} ! </h1>
-<h2> Welcome to your Meals & Macros Profile Page</h2>
+<h2> Meals & Macros Profile Page</h2><br>
 
-
-<!-- <h2>Please complete this questionare to calculate your daily calories and macros:</h2>
-<a href="/calculator">Meals & Macros Calculator</a><br> -->
-
-<h1> Your daily calories: {{ deficit }} </h1>
-<h1> Your daily macros in grams: {{ macros_by_grams }} </h1>
-
+<h3> Your daily calories: {{ deficit }} </h3>
+<h3> Your daily macros in grams: {{ macros_by_grams }} </h3>
+<br>
  
 <h4> Food </h4>
 <ul class="nav navbar-nav navbar-right">
@@ -32,7 +28,5 @@
 <ul class="nav navbar-nav navbar-right">
     <li><a id="nav-goals" href="/goals">Fitness Goals</a></li>
 </ul>
-
-
 
 {% endblock %} 

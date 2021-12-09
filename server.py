@@ -72,11 +72,12 @@ def get_user_foods():
 
     user_id = session['user_id']
     user_foods = crud.get_all_food(user_id)
+    all_food=crud.get_all_food(user_id)
 
     if user not in session:
         redirect('/login-page')
        
-    return render_template('food.html', foods=user_foods)
+    return render_template('food.html', foods=user_foods, all_food=all_food)
 
 @app.route('/all_food')
 def all_foods():
@@ -219,8 +220,8 @@ def fitness_goals():
 
     user_id=session['user_id']
     goal = crud.create_goal(user_id, strength, running, weight_loss, consistency, stretching, high_intensity_training, nutrition, overall_health)
-    
-    return redirect('/goals')
+
+    return redirect('/index')
 
 @app.route('/goals', methods=['GET'])
 def get_user_goals():
