@@ -46,14 +46,6 @@
 </div>
 </p>
 
-<!-- {% for food in foods %}
-<li class="badge"><a>{{ food.food_name }}</a></li>
-<li><a>Protein: <span class="badge">{{ food.protein }}</span></a></li>
-<li><a>Carbohydrates: <span class="badge">{{ food.carb }}</span></a></li>
-<li><a>Fat: <span class="badge">{{ food.fat }}</span></a></li>
-<li><a>Calories: <span class="badge">{{ food.calories }}</span></a></li><br>
-</ul>
-{% endfor %} -->
 
         {% for i in all_food %}
         Food Item: {{i.food_name}} <br>
@@ -62,10 +54,6 @@
         Carb: {{i.carb}} <br>
         Fat: {{i.fat}} <br><br>
         {% endfor %}
-<!-- 
-</form>
-<a href="/all_food" target="_blank">To Get A List Of All Your Food Entries Click Here</a>
-</body> -->
 
 
 {% endblock %} 

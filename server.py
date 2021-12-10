@@ -102,8 +102,8 @@ def user():
         crud.create_user(email, password, name, lname)
         flash('User created! Log into account.')
     
-    return redirect('/')
-    # return render_template('homepage.html' , user=user)
+    # return redirect('/')
+    return render_template('homepage.html' , user=user)
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -124,13 +124,6 @@ def login():
         
     
     return render_template('deficit-macros.html' , user=user)
-
-# @app.route('/login')
-# def already_a_user():
-#     if session['user_id'] = user.user_id
-
-#     redirect('/index')
-
 
 @app.route('/logout')
 def confirm_logout():
@@ -233,7 +226,7 @@ def get_user_goals():
     if user not in session:
         redirect('/login-page')
        
-    return render_template('goals.html', goals=user_goals)
+    return render_template('goals.html', user_goals=user_goals)
     
 @app.route('/exercise', methods=['POST' , 'GET'])
 def track_exercise():
@@ -242,7 +235,7 @@ def track_exercise():
 
     user_id =session['user_id']
 
-    return render_template('exercise.html')
+    return render_template('exercise.html', exercise=exercise)
 
 if __name__ == "__main__":
     connect_to_db(app)

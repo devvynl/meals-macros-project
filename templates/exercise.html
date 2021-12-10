@@ -15,10 +15,18 @@
             <input type='radio' name="no" id="no">
             <label for="yes">No</label><br>
         </fieldset>
+        <fieldset> 
+            <legend>Exercise Journal</legend>
+            <input type='text' name="exercise" id="exercise">
+        </fieldset>
         <input type='submit' value='Submit'>
 </div>
-</form>
-
+</form><br> 
+    <p>
+    <script> document.write(new Date().toLocaleDateString()); </script>
+    </p>
+        Today's Exercise Entry: {{ exercise }} <br>
+       
 
 
     

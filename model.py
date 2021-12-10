@@ -107,18 +107,18 @@ class Food(db.Model):
     def __repr__(self):
         return f"<Food food_id{self.food_id} user_id={self.user_id}>"
 
-# class Exercise(db.Model):
+class Exercise(db.Model):
 
-#     __tablename__ = 'exercises'
+    __tablename__ = 'exercises'
 
-#     exercise_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-#     exercise = db.Column(db.String)
+    exercise_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    exercise = db.Column(db.String)
 
-#     user = db.relationship("User", backref="exercises")
+    user = db.relationship("User", backref="exercises")
 
-#     def __repr__(self):
-#         return f"<Exercise exercise_id{self.exercise_id} user_id={self.user_id}>"
+    def __repr__(self):
+        return f"<Exercise exercise_id{self.exercise_id} user_id={self.user_id}>"
 
 # class User_tracking(db.Model):
 

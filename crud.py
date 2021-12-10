@@ -181,19 +181,20 @@ def new_calculator(tdee, deficit, macros, user_id, questions_id, protein_goal, f
 
     return calculator_info 
 
-# def user_exercises(exercise, user_id):
+def user_exercises(exercise, user_id):
      
-#      """track exercise """
+     """track exercise """
 
-#      exercise_info = Exercise(
-#          exercise=exercise, 
-#          user_id=user_id
-#      )
+     exercise_info = Exercise(
+         exercise=exercise, 
+         user_id=user_id
+     )
 
-#     db.session.add(exercises_info)
-#     db.session.commit()
+    
+     db.session.add(exercise_info)
+     db.session.commit()
 
-#     return exercise_info 
+     return exercise_info 
 
 if __name__ == '__main__':
     from server import app
