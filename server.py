@@ -235,14 +235,14 @@ def get_user_goals():
        
     return render_template('goals.html', goals=user_goals)
     
-# @app.route('/exercise', methods=['POST' , 'GET'])
-# def track_exercise():
-#     """ track exercise """
-#     exercise = request.form.get('exercise')
+@app.route('/exercise', methods=['POST' , 'GET'])
+def track_exercise():
+    """ track exercise """
+    exercise = request.form.get('exercise')
 
-#     user_id =session['user_id']
+    user_id =session['user_id']
 
-#     return render_template('exercise.html')
+    return render_template('exercise.html')
 
 if __name__ == "__main__":
     connect_to_db(app)

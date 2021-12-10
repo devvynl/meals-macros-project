@@ -15,8 +15,16 @@
             <li class="nav-item">
               <a class="nav-link" href="/login-page">Log In</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/index">Profile</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Profile
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/food">Food Diary</a></li>
+                <li><a class="dropdown-item" href="/goals">Fitness Goals</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Exercise Diary</a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Meal Suggestions</a>
@@ -40,21 +48,21 @@
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script> 
-    <body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap" rel="stylesheet">
     <div id="root"></div>
     <script type="text/jsx" src="/project/static/calories.jsx"></script>
-    </body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Lobster&display=swap" rel="stylesheet">
     
     {% block head %}{% endblock %}
   </head>
   <body>
-    <!-- {% for msg in get_flashed_messages() %}
-    <p class="flash-msg">
-      {{ msg }}
-    </p>
-     {% endfor %} -->
+  
     {% block body %}{% endblock %}
-    
+</body>
 </html>
 
 

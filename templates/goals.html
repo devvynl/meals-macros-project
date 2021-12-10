@@ -28,18 +28,6 @@
             <label for="overall_health">Overall Health</label><br>
         </fieldset>
         <input type='submit' value='Submit'>
-        {% goal in goals %}
-        <li><a>Curent Goals:
-             <span class="badge">{{ goal.strength }}</span></a>
-             <span class="badge">{{ goal.running }}</span></a>
-             <span class="badge">{{ goal.weight_loss }}</span></a>
-             <span class="badge">{{ goal.consistency }}</span></a>
-             <span class="badge">{{ goal.stretching }}</span></a>
-             <span class="badge">{{ goal.high_intensity_training }}</span></a>
-             <span class="badge">{{ goal.nutrition }}</span></a>
-             <span class="badge">{{ goal.overall_health }}</span></a>
-            </li>
-        {% endfor %} 
 </div>
 </form>
 {% endblock %} 
